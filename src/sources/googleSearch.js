@@ -1,5 +1,6 @@
 import { config } from '../config.js';
-import { safeGet, logger } from '../utils/helpers.js';
+import { safeGet } from '../utils/helpers.js';
+import { logger } from '../utils/logger.js';
 import axios from 'axios';
 import * as cheerio from 'cheerio';
 

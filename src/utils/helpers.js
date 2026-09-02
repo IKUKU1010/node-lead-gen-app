@@ -50,3 +50,5 @@ export const extractDomain = (url) => {
   if (!url) return '';
   return url.replace(/https?:\/\/(www\.)?/, '').split('/')[0];
 };
+
+export { logger };
