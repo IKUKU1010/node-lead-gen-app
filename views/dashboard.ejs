@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎯 Lead Generation Agent</h1>
+            <p class="subtitle">Find and enrich potential clients automatically</p>
+        </header>
+
+        <div class="main-grid">
+            <!-- Control Panel -->
+            <div class="card control-panel">
+                <h2>🚀 Start New Search</h2>
+                <form id="searchForm">
+                    <div class="form-group">
+                        <label for="query">Business Type *</label>
+                        <input type="text" id="query" placeholder="e.g., digital marketing agency" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="location">Location</label>
+                        <input type="text" id="location" placeholder="e.g., Miami, FL" value="<%= config.defaultLocation %>">
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="ypPages">Yellow Pages Pages</label>
+                            <input type="number" id="ypPages" value="2" min="1" max="10">
+                        </div>
+                        <div class="form-group">
+                            <label for="yelpPages">Yelp Pages</label>
+                            <input type="number" id="yelpPages" value="2" min="1" max="10">
+                        </div>
+                        <div class="form-group">
+                            <label for="searchResults">Search Results</label>
+                            <input type="number" id="searchResults" value="15" min="1" max="50">
+                        </div>
+                    </div>
+                    
+                    <button type="submit" id="runBtn" class="btn-primary">
+                        <span class="btn-icon">▶</span> Start Lead Generation
+                    </button>
+                </form>
+                
+                <div id="status" class="status-bar">
+                    <div class="status-indicator idle">
+                        <span class="dot"></span>
+                        Ready
+                    </div>
+                </div>
+            </div>
+
+            <!-- Logs Panel -->
+            <div class="card logs-panel">
+                <h2>📋 Live Logs</h2>
+                <div id="logContainer" class="log-container">
+                    <div class="log-placeholder">Waiting for activity...</div>
+                </div>
+                <div class="log-controls">
+                    <button id="clearLogsBtn" class="btn-secondary">Clear Logs</button>
+                    <button id="downloadLogsBtn" class="btn-secondary">Download Logs</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Results Panel -->
+        <div class="card results-panel" id="resultsPanel" style="display: none;">
+            <div class="results-header">
+                <h2>📊 Results</h2>
+                <div class="results-stats">
+                    <span class="stat-badge" id="leadsCount">0 leads found</span>
+                    <button id="downloadCsvBtn" class="btn-success">⬇ Download CSV</button>
+                </div>
+            </div>
+            <div class="table-container">
+                <table id="resultsTable">
+                    <thead>
+                        <tr>
+                            <th>Company</th>
+                            <th>Contact</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Confidence</th>
+                            <th>Source</th>
+                        </tr>
+                    </thead>
+                    <tbody id="resultsBody">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Footer Status -->
+        <div class="footer-status">
+            <div class="footer-item">
+                <span class="label">Apify:</span>
+                <span id="apifyStatus" class="status-badge">⚠ Not Configured</span>
+            </div>
+            <div class="footer-item">
+                <span class="label">Last Run:</span>
+                <span id="lastRun">Never</span>
+            </div>
+            <div class="footer-item">
+                <span class="label">Leads Collected:</span>
+                <span id="totalLeads">0</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.socket.io/4.6.1/socket.io.min.js"></script>
+    <script src="/js/app.js"></script>
+</body>
+</html>

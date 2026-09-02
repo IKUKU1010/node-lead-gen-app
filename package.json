@@ -1,0 +1,32 @@
+{
+  "name": "lead-gen-agent-web",
+  "version": "1.0.0",
+  "description": "Lead Generation AI Agent - Web Interface",
+  "main": "src/server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js",
+    "pm2:start": "pm2 start ecosystem.config.js",
+    "pm2:stop": "pm2 stop lead-agent-web",
+    "pm2:restart": "pm2 restart lead-agent-web",
+    "pm2:logs": "pm2 logs lead-agent-web"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "express-session": "^1.17.3",
+    "socket.io": "^4.6.1",
+    "axios": "^1.6.0",
+    "cheerio": "^1.0.0-rc.12",
+    "dotenv": "^16.3.0",
+    "ejs": "^3.1.9",
+    "winston": "^3.11.0",
+    "multer": "^1.4.5-lts.1",
+    "compression": "^1.7.4",
+    "helmet": "^7.0.0",
+    "cors": "^2.8.5"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
