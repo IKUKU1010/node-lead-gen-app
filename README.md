@@ -14,13 +14,39 @@ A node agent automatically discovers potential clients by searching public busin
 ## Installation
 
 ```bash
-# Clone or create project directory
-mkdir -p /var/www/lead-agent
-cd /var/www/lead-agent
+git clone https://github.com/IKUKU1010/node-lead-gen-app.git
 
-# Install dependencies
+or
+
+git config --global http.version HTTP/1.1
+git clone https://github.com/IKUKU1010/node-lead-gen-app.git
+
+# Step 1: Install dependencies
+
+cd /var/www/lead-agent-web
 npm install
 
-# Configure environment
+# Step 2: Configure .env
+
 cp .env.example .env
 nano .env  # Add your API keys
+
+# Step 3: Create directories if not existing
+
+mkdir -p logs backups
+
+# Step 4: Start with PM2
+
+pm2 start ecosystem.config.js
+
+# Step 5: Check status
+
+pm2 status
+
+# Step 6: View logs
+
+pm2 logs lead-agent-web
+
+# Step 7: Access in browser
+
+# Open your browser and go to: http://your-server-ip:3000
